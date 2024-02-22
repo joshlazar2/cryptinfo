@@ -6,7 +6,7 @@ import OneCrypto from './components/OneCrypto';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App p-12 md:p-10 bg-slate-200">
       <Nav />
       <Routes>
         <Route path='/' element={<Main />} />

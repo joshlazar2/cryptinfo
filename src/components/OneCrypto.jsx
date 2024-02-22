@@ -68,7 +68,7 @@ const OneCrypto = () => {
     }, [id])
 
     return (
-        <div className='min-h-screen bg-slate-200 p-10'>
+        <div className='min-h-screen'>
             <h2 className='text-blue-500 p-8 font-bold text-2xl'>{crypto.name}</h2>
             <div className='flex justify-center items-center'>
                 {
