@@ -13,7 +13,7 @@ const Nav = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        navigate(`/oneCrypto/${crypto}`)
+        navigate(`/oneCrypto/${crypto.toLowerCase()}`)
     }
 
     return (
