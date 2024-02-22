@@ -27,12 +27,20 @@ const Main = () => {
                     {
                         topTen.map((crypto) => (
                             <Link to={`/oneCrypto/${crypto.name}`}>
-                                <div className='border rounded-xl bg-white shadow-xl p-6 space-y-4 text-left' key={crypto.name}>
+                                <div className='border rounded-xl bg-white shadow-xl p-6 md:p-14 space-y-4 text-left' key={crypto.name}>
                                     <h3 className='text-blue-500 font-bold'>{crypto.name}</h3>
-                                    <p className='text-blue-500'>Rank: {crypto.rank}</p>
-                                    <p className='text-blue-500'>Symbol: {crypto.symbol}</p>
-                                    <p className='text-blue-500'>Price: ${parseFloat(crypto.priceUsd) < 1 ? parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                                    <p className='text-blue-500'>Market Cap: ${parseFloat(crypto.marketCapUsd).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                                    <div className='flex space-x-3'>
+                                        <p className='text-blue-500 font-bold'>Rank:</p>
+                                        <p className='text-blue-500'>{crypto.rank}</p>
+                                    </div>
+                                    <div className='flex space-x-3'>
+                                        <p className='text-blue-500 font-bold'>Symbol:</p>
+                                        <p className='text-blue-500'>{crypto.symbol}</p>
+                                    </div>
+                                    <div className='flex space-x-3'>
+                                        <p className='text-blue-500 font-bold'>Price</p>
+                                        <p className='text-blue-500'>${parseFloat(crypto.priceUsd) < 1 ? parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                    </div>
                                 </div>
                             </Link>
                         ))

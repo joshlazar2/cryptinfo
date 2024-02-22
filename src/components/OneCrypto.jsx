@@ -34,12 +34,30 @@ const OneCrypto = () => {
                 {
                     isError ? <p className='text-red-500 font-bold text-2xl'>{errMessage}</p> :
                         <div className='bg-white rounded-2xl p-8 md:p-16 space-y-4 shadow-xl text-left'>
-                            <p className='text-blue-500'>Rank: {crypto.rank}</p>
-                            <p className='text-blue-500'>Symbol: {crypto.symbol}</p>
-                            <p className='text-blue-500'>Price: ${parseFloat(crypto.priceUsd) < 1 ? parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                            <p className='text-blue-500'>Market Cap: ${parseFloat(crypto.marketCapUsd).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                            <p className='text-blue-500'>Supply: {parseFloat(crypto.supply).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                            <p className='text-blue-500'>24 hr Volume: ${parseFloat(crypto.volumeUsd24Hr).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                            <div className='flex space-x-3'>
+                                <p className='text-blue-500 font-bold'>Rank:</p>
+                                <p className='text-blue-500'>{crypto.rank}</p>
+                            </div>
+                            <div className='flex space-x-3'>
+                                <p className='text-blue-500 font-bold'>Symbol:</p>
+                                <p className='text-blue-500'>{crypto.symbol}</p>
+                            </div>
+                            <div className='flex space-x-3'>
+                                <p className='text-blue-500 font-bold'>Price</p>
+                                <p className='text-blue-500'>${parseFloat(crypto.priceUsd) < 1 ? parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                            </div>
+                            <div className='flex space-x-3'>
+                                <p className='text-blue-500 font-bold'>Market Cap:</p>
+                                <p className='text-blue-500'>${parseFloat(crypto.marketCapUsd).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                            </div>
+                            <div className='flex space-x-3'>
+                                <p className='text-blue-500 font-bold'>Supply:</p>
+                                <p className='text-blue-500'>{parseFloat(crypto.supply).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                            </div>
+                            <div className='flex space-x-3'>
+                                <p className='text-blue-500 font-bold'>24 hr Volume: </p>
+                                <p className='text-blue-500'>${parseFloat(crypto.volumeUsd24Hr).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                            </div>
                         </div>
                 }
             </div>
