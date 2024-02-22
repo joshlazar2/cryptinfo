@@ -17,7 +17,7 @@ const Nav = () => {
     }
 
     return (
-        <div className='flex flex-col space-y-4 md:flex-row md:justify-around md:space-y-0'>
+        <div className='flex flex-col space-y-4 md:flex-row md:justify-around md:space-y-0 p-4'>
             <Link to={'/'}><h1 className='text-blue-500 text-4xl font-bold'>Cryptinfo</h1></Link>
             <form onSubmit={submitHandler} className='space-x-4'>
                 <input className='p-2 rounded-xl' type="text" onChange={changeHandler} placeholder='Search a Crypto ID'/>

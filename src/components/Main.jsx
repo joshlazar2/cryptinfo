@@ -18,7 +18,7 @@ const Main = () => {
     }, [])
 
     return (
-        <div className='min-h-screen p-4'>
+        <div>
             <h2 className="p-8 font-bold text-blue-500 text-2xl">Top Market Caps</h2>
             <div className='flex items-center justify-center'>
                 <div className='grid grid-cols-1 gap-14 md:grid-cols-4 md:gap-10'>

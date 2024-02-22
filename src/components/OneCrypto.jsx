@@ -68,14 +68,14 @@ const OneCrypto = () => {
     }, [id])
 
     return (
-        <div className='min-h-screen'>
+        <div className='p-4'>
             <h2 className='text-blue-500 p-8 font-bold text-2xl'>{crypto.name}</h2>
-            <div className='flex justify-center items-center'>
+            <div>
                 {
                     isError ? <p className='text-red-500 font-bold text-2xl'>{errMessage}</p> :
-                        <div className='bg-white rounded-2xl p-8 md:p-16 space-y-4 shadow-xl flex flex-col items-center'>
+                        <div className='bg-white rounded-2xl p-16 md:p-16 space-y-6 shadow-xl flex flex-col items-center justify-center'>
                             <img className='w-20' src={crypto.image} alt="" />
-                            <div className='space-y-4'>
+                            <div className='space-y-4 text-left'>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>ID:</p>
                                     <p className='text-blue-500'>{crypto.id}</p>
@@ -105,9 +105,11 @@ const OneCrypto = () => {
                                     <p className='text-blue-500 font-bold'>Supply:</p>
                                     <p className='text-blue-500'>{parseFloat(crypto.supply).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
                                 </div>
-                                <div className='flex flex-col space-y-2'>
-                                    <p className='text-blue-500 font-bold'>Description:</p>
-                                    <p className='text-blue-500 text-sm'>{crypto.description}</p>
+                            </div>
+                            <div className='flex flex-col space-y-2 w-2/3'>
+                                <p className='text-blue-500 font-bold'>Description:</p>
+                                <div className='overflow-auto max-h-[200px] break-words'>
+                                    <p className='text-blue-500 text-xs md:text-sm'>{crypto.description}</p>
                                 </div>
                             </div>
                         </div>
