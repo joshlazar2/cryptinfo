@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Main = () => {
 
-    const apiKey = process.env.REACT_APP_API_KEY;
-
     const [topTen, setTopTen] = useState([])
 
     useEffect(() => {
@@ -26,9 +24,13 @@ const Main = () => {
                 <div className='grid grid-cols-1 gap-14 md:grid-cols-4 md:gap-10'>
                     {
                         topTen.map((crypto) => (
-                            <Link to={`/oneCrypto/${crypto.name}`}>
+                            <Link to={`/oneCrypto/${crypto.id}`}>
                                 <div className='border rounded-xl bg-white shadow-xl p-6 md:p-14 space-y-4 text-left' key={crypto.name}>
                                     <h3 className='text-blue-500 font-bold'>{crypto.name}</h3>
+                                    <div className='flex space-x-3'>
+                                        <p className='text-blue-500 font-bold'>ID:</p>
+                                        <p className='text-blue-500'>{crypto.id}</p>
+                                    </div>
                                     <div className='flex space-x-3'>
                                         <p className='text-blue-500 font-bold'>Rank:</p>
                                         <p className='text-blue-500'>{crypto.rank}</p>

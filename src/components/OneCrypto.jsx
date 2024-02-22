@@ -4,61 +4,114 @@ import { useParams } from 'react-router-dom';
 
 const OneCrypto = () => {
 
-    const { name } = useParams();
+    const { id } = useParams();
 
-    const [crypto, setCrypto] = useState({})
+    // const [crypto, setCrypto] = useState({})
+
+    const [crypto, setCrypto] = useState({
+        name: '',
+        id: '',
+        rank: 0,
+        symbol: '',
+        price: 0,
+        marketCap: 0,
+        supply: 0,
+        volume: 0,
+        image: '',
+        description: ''
+    })
 
     const [isError, setIsError] = useState(false)
 
     const errMessage = "Cryptocurrency Not Found"
 
+    // useEffect(() => {
+    //     axios
+    //         .get(`https://api.coincap.io/v2/assets/${id}`)
+    //         .then((res) => {
+    //             console.log(res.data.data)
+    //             setIsError(false)
+    //             setCrypto(res.data.data)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //             setCrypto({})
+    //             setIsError(true)
+    //         })
+    // }, [id])
+
     useEffect(() => {
         axios
-            .get(`https://api.coincap.io/v2/assets/${name.toLowerCase()}`)
+            .get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`)
             .then((res) => {
-                console.log(res.data.data)
+                console.log(res.data)
                 setIsError(false)
-                setCrypto(res.data.data)
+                setCrypto({
+                    name: res.data.name,
+                    id: res.data.id,
+                    rank: res.data.market_cap_rank,
+                    symbol: res.data.symbol,
+                    price: res.data.market_data.current_price.usd,
+                    marketCap: res.data.market_data.market_cap.usd,
+                    supply: res.data.market_data.circulating_supply,
+                    priceChange: res.data.market_data.price_change_24h_in_currency.usd,
+                    priceChangePercentage: res.data.market_data.price_change_percentage_24h,
+                    image: res.data.image.large,
+                    description: res.data.description.en
+                })
             })
             .catch((err) => {
                 console.log(err)
                 setCrypto({})
                 setIsError(true)
             })
-    }, [name])
+    }, [id])
 
     return (
-        <div className='min-h-screen bg-slate-200'>
+        <div className='min-h-screen bg-slate-200 md:p-8'>
             <h2 className='text-blue-500 p-8 font-bold text-2xl'>{crypto.name}</h2>
             <div className='flex justify-center items-center'>
                 {
                     isError ? <p className='text-red-500 font-bold text-2xl'>{errMessage}</p> :
-                        <div className='bg-white rounded-2xl p-8 md:p-16 space-y-4 shadow-xl text-left'>
-                            <div className='flex space-x-3'>
-                                <p className='text-blue-500 font-bold'>Rank:</p>
-                                <p className='text-blue-500'>{crypto.rank}</p>
-                            </div>
-                            <div className='flex space-x-3'>
-                                <p className='text-blue-500 font-bold'>Symbol:</p>
-                                <p className='text-blue-500'>{crypto.symbol}</p>
-                            </div>
-                            <div className='flex space-x-3'>
-                                <p className='text-blue-500 font-bold'>Price</p>
-                                <p className='text-blue-500'>${parseFloat(crypto.priceUsd) < 1 ? parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                            </div>
-                            <div className='flex space-x-3'>
-                                <p className='text-blue-500 font-bold'>Market Cap:</p>
-                                <p className='text-blue-500'>${parseFloat(crypto.marketCapUsd).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                            </div>
-                            <div className='flex space-x-3'>
-                                <p className='text-blue-500 font-bold'>Supply:</p>
-                                <p className='text-blue-500'>{parseFloat(crypto.supply).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                            </div>
-                            <div className='flex space-x-3'>
-                                <p className='text-blue-500 font-bold'>24 hr Volume: </p>
-                                <p className='text-blue-500'>${parseFloat(crypto.volumeUsd24Hr).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                        <div className='bg-white rounded-2xl p-8 md:p-16 space-y-4 shadow-xl flex flex-col items-center'>
+                            <img className='w-20' src={crypto.image} alt="" />
+                            <div className='space-y-4'>
+                                <div className='flex space-x-3'>
+                                    <p className='text-blue-500 font-bold'>ID:</p>
+                                    <p className='text-blue-500'>{crypto.id}</p>
+                                </div>
+                                <div className='flex space-x-3'>
+                                    <p className='text-blue-500 font-bold'>Rank:</p>
+                                    <p className='text-blue-500'>{crypto.rank}</p>
+                                </div>
+                                <div className='flex space-x-3'>
+                                    <p className='text-blue-500 font-bold'>Symbol:</p>
+                                    <p className='text-blue-500'>{crypto.symbol}</p>
+                                </div>
+                                <div className='flex space-x-3'>
+                                    <p className='text-blue-500 font-bold'>Price</p>
+                                    <p className='text-blue-500'>${parseFloat(crypto.price) < 1 ? parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                </div>
+                                <div className='flex space-x-3'>
+                                    <p className='text-blue-500 font-bold'>24 hr Price Change:</p>
+                                    <p className='text-blue-500'>${crypto.priceChange}</p>
+                                    <p className='text-blue-500'>{crypto.priceChangePercentage}%</p>
+                                </div>
+                                <div className='flex space-x-3'>
+                                    <p className='text-blue-500 font-bold'>Market Cap:</p>
+                                    <p className='text-blue-500'>${parseFloat(crypto.marketCap).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                                </div>
+                                <div className='flex space-x-3'>
+                                    <p className='text-blue-500 font-bold'>Supply:</p>
+                                    <p className='text-blue-500'>{parseFloat(crypto.supply).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                                </div>
+                                <div className='flex flex-col space-y-2'>
+                                    <p className='text-blue-500 font-bold'>Description:</p>
+                                    <p className='text-blue-500 text-sm'>{crypto.description}</p>
+                                </div>
                             </div>
                         </div>
+
                 }
             </div>
         </div>

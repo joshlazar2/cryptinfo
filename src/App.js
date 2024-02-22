@@ -10,7 +10,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='/oneCrypto/:name' element={<OneCrypto />} />
+        <Route path='/oneCrypto/:id' element={<OneCrypto />} />
       </Routes>
     </div>
   );
