@@ -23,7 +23,7 @@ const Main = () => {
         <div className='min-h-screen bg-slate-200 p-4'>
             <h2 className="p-8 font-bold text-blue-500 text-2xl">Top Market Caps</h2>
             <div className='flex items-center justify-center'>
-                <div className='flex flex-col space-y-14'>
+                <div className='grid grid-cols-1 gap-14 md:grid-cols-4 md:gap-10'>
                     {
                         topTen.map((crypto) => (
                             <Link to={`/oneCrypto/${crypto.name}`}>
