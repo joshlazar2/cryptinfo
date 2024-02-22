@@ -33,7 +33,7 @@ const OneCrypto = () => {
             <div className='flex justify-center items-center'>
                 {
                     isError ? <p className='text-red-500 font-bold text-2xl'>{errMessage}</p> :
-                        <div className='bg-white rounded-2xl p-8 md:p-16 space-y-4 shadow-xl'>
+                        <div className='bg-white rounded-2xl p-8 md:p-16 space-y-4 shadow-xl text-left'>
                             <p className='text-blue-500'>Rank: {crypto.rank}</p>
                             <p className='text-blue-500'>Symbol: {crypto.symbol}</p>
                             <p className='text-blue-500'>Price: ${parseFloat(crypto.priceUsd) < 1 ? parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>

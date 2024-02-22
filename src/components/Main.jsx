@@ -27,7 +27,7 @@ const Main = () => {
                     {
                         topTen.map((crypto) => (
                             <Link to={`/oneCrypto/${crypto.name}`}>
-                                <div className='border rounded-xl bg-white shadow-xl p-6 space-y-4' key={crypto.name}>
+                                <div className='border rounded-xl bg-white shadow-xl p-6 space-y-4 text-left' key={crypto.name}>
                                     <h3 className='text-blue-500 font-bold'>{crypto.name}</h3>
                                     <p className='text-blue-500'>Rank: {crypto.rank}</p>
                                     <p className='text-blue-500'>Symbol: {crypto.symbol}</p>
