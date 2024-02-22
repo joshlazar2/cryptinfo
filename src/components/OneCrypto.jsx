@@ -68,12 +68,12 @@ const OneCrypto = () => {
     }, [id])
 
     return (
-        <div className='p-4'>
+        <div className='p-4 min-h-screen'>
             <h2 className='text-blue-500 p-8 font-bold text-2xl'>{crypto.name}</h2>
             <div>
                 {
                     isError ? <p className='text-red-500 font-bold text-2xl'>{errMessage}</p> :
-                        <div className='bg-white rounded-2xl p-16 md:p-16 space-y-6 shadow-xl flex flex-col items-center justify-center'>
+                        <div className='bg-white rounded-2xl p-6 md:p-12 space-y-6 shadow-xl flex flex-col items-center justify-center'>
                             <img className='w-20' src={crypto.image} alt="" />
                             <div className='space-y-4 text-left'>
                                 <div className='flex space-x-3'>
@@ -109,7 +109,7 @@ const OneCrypto = () => {
                             <div className='flex flex-col space-y-2 w-2/3'>
                                 <p className='text-blue-500 font-bold'>Description:</p>
                                 <div className='overflow-auto max-h-[200px] break-words'>
-                                    <p className='text-blue-500 text-xs md:text-sm'>{crypto.description}</p>
+                                    <p className='text-blue-500 text-xs md:text-sm '>{crypto.description}</p>
                                 </div>
                             </div>
                         </div>
