@@ -6,7 +6,15 @@ const OneCrypto = () => {
 
     const { id } = useParams();
 
-    // const [crypto, setCrypto] = useState({})
+    const [range, setRange] = useState({
+        twentyFour: false,
+        seven: false,
+        fourteen: false,
+        thirty: false,
+        sixty: false,
+        twoHundred: false,
+        year: false
+    })
 
     const [crypto, setCrypto] = useState({
         name: '',
@@ -25,21 +33,6 @@ const OneCrypto = () => {
 
     const errMessage = "Cryptocurrency Not Found"
 
-    // useEffect(() => {
-    //     axios
-    //         .get(`https://api.coincap.io/v2/assets/${id}`)
-    //         .then((res) => {
-    //             console.log(res.data.data)
-    //             setIsError(false)
-    //             setCrypto(res.data.data)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //             setCrypto({})
-    //             setIsError(true)
-    //         })
-    // }, [id])
-
     useEffect(() => {
         axios
             .get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`)
@@ -55,7 +48,13 @@ const OneCrypto = () => {
                     marketCap: res.data.market_data.market_cap.usd,
                     supply: res.data.market_data.circulating_supply,
                     priceChange: res.data.market_data.price_change_24h_in_currency.usd,
-                    priceChangePercentage: res.data.market_data.price_change_percentage_24h,
+                    priceChangePercentage24: res.data.market_data.price_change_percentage_24h,
+                    priceChangePercentage7: res.data.market_data.price_change_percentage_7d,
+                    priceChangePercentage14: res.data.market_data.price_change_percentage_14d,
+                    priceChangePercentage30: res.data.market_data.price_change_percentage_30d,
+                    priceChangePercentage60: res.data.market_data.price_change_percentage_60d,
+                    priceChangePercentage200: res.data.market_data.price_change_percentage_200d,
+                    priceChangePercentage1y: res.data.market_data.price_change_percentage_1y,
                     image: res.data.image.large,
                     description: res.data.description.en
                 })
@@ -66,6 +65,21 @@ const OneCrypto = () => {
                 setIsError(true)
             })
     }, [id])
+
+
+    const clickHandler = (e) => {
+        setRange({
+            twentyFour: false,
+            seven: false,
+            fourteen: false,
+            thirty: false,
+            sixty: false,
+            twoHundred: false,
+            year: false,
+            [e.target.name]: true
+        })
+
+    }
 
     return (
         <div className='p-4 min-h-screen'>
@@ -92,10 +106,30 @@ const OneCrypto = () => {
                                     <p className='text-blue-500 font-bold'>Price</p>
                                     <p className='text-blue-500'>${parseFloat(crypto.price) < 1 ? parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                 </div>
+                                <div className='flex space-x-2'>
+                                    <button onClick={clickHandler} name='twentyFour' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>24hr</button>
+                                    <button onClick={clickHandler} name='seven' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>7d</button>
+                                    <button onClick={clickHandler} name='fourteen' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>14d</button>
+                                    <button onClick={clickHandler} name='thirty' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>30d</button>
+                                    <button onClick={clickHandler} name='sixty' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>60d</button>
+                                    <button onClick={clickHandler} name='twoHundred' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>200d</button>
+                                    <button onClick={clickHandler} name='year' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>1yr</button>
+                                </div>
+                                <div className='flex space-x-3'>
+                                    <p className='text-blue-500 font-bold'>Percent Change:</p>
+                                    <p className='text-blue-500'>
+                                        {range.twentyFour && `${crypto.priceChangePercentage24}%`}
+                                        {range.seven && `${crypto.priceChangePercentage7}%`}
+                                        {range.fourteen && `${crypto.priceChangePercentage14}%`}
+                                        {range.thirty && `${crypto.priceChangePercentage30}%`}
+                                        {range.sixty && `${crypto.priceChangePercentage60}%`}
+                                        {range.twoHundred && `${crypto.priceChangePercentage200}%`}
+                                        {range.year && `${crypto.priceChangePercentage1y}%`}
+                                    </p>
+                                </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>24 hr Price Change:</p>
                                     <p className='text-blue-500'>${parseFloat(crypto.priceChange).toFixed(2)}</p>
-                                    <p className='text-blue-500'>{crypto.priceChangePercentage}%</p>
                                 </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>Market Cap:</p>
@@ -109,7 +143,7 @@ const OneCrypto = () => {
                             <div className='flex flex-col space-y-2 w-2/3'>
                                 <p className='text-blue-500 font-bold'>Description:</p>
                                 <div className='overflow-auto max-h-[200px] break-words'>
-                                <p className='text-xs md:text-sm text-left' dangerouslySetInnerHTML={{ __html: crypto.description }} />
+                                    <p className='text-xs md:text-sm text-left' dangerouslySetInnerHTML={{ __html: crypto.description }} />
                                 </div>
                             </div>
                         </div>
