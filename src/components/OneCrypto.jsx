@@ -107,13 +107,13 @@ const OneCrypto = () => {
                                     <p className='text-blue-500'>${parseFloat(crypto.price) < 1 ? parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                 </div>
                                 <div className='flex space-x-2'>
-                                    <button onClick={clickHandler} name='twentyFour' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>24hr</button>
-                                    <button onClick={clickHandler} name='seven' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>7d</button>
-                                    <button onClick={clickHandler} name='fourteen' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>14d</button>
-                                    <button onClick={clickHandler} name='thirty' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>30d</button>
-                                    <button onClick={clickHandler} name='sixty' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>60d</button>
-                                    <button onClick={clickHandler} name='twoHundred' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>200d</button>
-                                    <button onClick={clickHandler} name='year' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700'>1yr</button>
+                                    <button onClick={clickHandler} name='twentyFour' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700 text-sm w-10'>24hr</button>
+                                    <button onClick={clickHandler} name='seven' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700 text-sm w-10'>7d</button>
+                                    <button onClick={clickHandler} name='fourteen' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700 text-sm w-10'>14d</button>
+                                    <button onClick={clickHandler} name='thirty' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700 text-sm w-10'>30d</button>
+                                    <button onClick={clickHandler} name='sixty' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700 text-sm w-10'>60d</button>
+                                    <button onClick={clickHandler} name='twoHundred' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700 text-sm w-10'>200d</button>
+                                    <button onClick={clickHandler} name='year' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700 text-sm w-10'>1yr</button>
                                 </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>Percent Change:</p>
