@@ -94,7 +94,7 @@ const OneCrypto = () => {
                                 </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>24 hr Price Change:</p>
-                                    <p className='text-blue-500'>${crypto.priceChange}</p>
+                                    <p className='text-blue-500'>${parseFloat(crypto.priceChange).toFixed(2)}</p>
                                     <p className='text-blue-500'>{crypto.priceChangePercentage}%</p>
                                 </div>
                                 <div className='flex space-x-3'>
@@ -109,7 +109,7 @@ const OneCrypto = () => {
                             <div className='flex flex-col space-y-2 w-2/3'>
                                 <p className='text-blue-500 font-bold'>Description:</p>
                                 <div className='overflow-auto max-h-[200px] break-words'>
-                                    <p className='text-blue-500 text-xs md:text-sm '>{crypto.description}</p>
+                                <p className='text-xs md:text-sm text-left' dangerouslySetInnerHTML={{ __html: crypto.description }} />
                                 </div>
                             </div>
                         </div>

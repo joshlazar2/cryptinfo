@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Main = () => {
 
-    const [topTen, setTopTen] = useState([])
+    const [topTwenty, setTopTwenty] = useState([])
 
     useEffect(() => {
         axios
             .get('https://api.coincap.io/v2/assets?limit=20')
             .then((res) => {
-                setTopTen(res.data.data)
+                setTopTwenty(res.data.data)
             })
             .catch((err) => {
                 console.log(err)
@@ -23,7 +23,7 @@ const Main = () => {
             <div className='flex items-center justify-center'>
                 <div className='grid grid-cols-1 gap-14 md:grid-cols-4 md:gap-10'>
                     {
-                        topTen.map((crypto) => (
+                        topTwenty.map((crypto) => (
                             <Link to={`/oneCrypto/${crypto.id}`}>
                                 <div className='border rounded-xl bg-white shadow-xl p-6 md:p-14 space-y-4 text-left' key={crypto.name}>
                                     <h3 className='text-blue-500 font-bold'>{crypto.name}</h3>
