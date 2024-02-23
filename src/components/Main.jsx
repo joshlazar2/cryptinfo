@@ -29,19 +29,19 @@ const Main = () => {
                                     <h3 className='text-blue-500 font-bold'>{crypto.name}</h3>
                                     <div className='flex space-x-3'>
                                         <p className='text-blue-500 font-bold'>ID:</p>
-                                        <p className='text-blue-500'>{crypto.id}</p>
+                                        <p>{crypto.id}</p>
                                     </div>
                                     <div className='flex space-x-3'>
                                         <p className='text-blue-500 font-bold'>Rank:</p>
-                                        <p className='text-blue-500'>{crypto.rank}</p>
+                                        <p>{crypto.rank}</p>
                                     </div>
                                     <div className='flex space-x-3'>
                                         <p className='text-blue-500 font-bold'>Symbol:</p>
-                                        <p className='text-blue-500'>{crypto.symbol}</p>
+                                        <p>{crypto.symbol}</p>
                                     </div>
                                     <div className='flex space-x-3'>
-                                        <p className='text-blue-500 font-bold'>Price</p>
-                                        <p className='text-blue-500'>${parseFloat(crypto.priceUsd) < 1 ? parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                        <p className='text-blue-500 font-bold'>Price:</p>
+                                        <p>${parseFloat(crypto.priceUsd) < 1 ? parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.priceUsd).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                     </div>
                                 </div>
                             </Link>

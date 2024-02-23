@@ -92,19 +92,19 @@ const OneCrypto = () => {
                             <div className='space-y-4 text-left'>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>ID:</p>
-                                    <p className='text-blue-500'>{crypto.id}</p>
+                                    <p>{crypto.id}</p>
                                 </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>Rank:</p>
-                                    <p className='text-blue-500'>{crypto.rank}</p>
+                                    <p>{crypto.rank}</p>
                                 </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>Symbol:</p>
-                                    <p className='text-blue-500'>{crypto.symbol}</p>
+                                    <p>{crypto.symbol}</p>
                                 </div>
                                 <div className='flex space-x-3'>
-                                    <p className='text-blue-500 font-bold'>Price</p>
-                                    <p className='text-blue-500'>${parseFloat(crypto.price) < 1 ? parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                    <p className='text-blue-500 font-bold'>Price:</p>
+                                    <p>${parseFloat(crypto.price) < 1 ? parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 10, maximumFractionDigits: 10 }).replace(/(\.0+|(?<=\..*?)0+)$/, '') : parseFloat(crypto.price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                 </div>
                                 <div className='flex space-x-2'>
                                     <button onClick={clickHandler} name='twentyFour' className='bg-blue-500 text-white p-1 rounded-xl hover:bg-blue-700 text-sm w-10'>24hr</button>
@@ -117,7 +117,7 @@ const OneCrypto = () => {
                                 </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>Percent Change:</p>
-                                    <p className='text-blue-500'>
+                                    <p>
                                         {range.twentyFour && `${crypto.priceChangePercentage24}%`}
                                         {range.seven && `${crypto.priceChangePercentage7}%`}
                                         {range.fourteen && `${crypto.priceChangePercentage14}%`}
@@ -129,15 +129,15 @@ const OneCrypto = () => {
                                 </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>24 hr Price Change:</p>
-                                    <p className='text-blue-500'>${parseFloat(crypto.priceChange).toFixed(2)}</p>
+                                    <p>${parseFloat(crypto.priceChange).toFixed(2)}</p>
                                 </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>Market Cap:</p>
-                                    <p className='text-blue-500'>${parseFloat(crypto.marketCap).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                                    <p>${parseFloat(crypto.marketCap).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
                                 </div>
                                 <div className='flex space-x-3'>
                                     <p className='text-blue-500 font-bold'>Supply:</p>
-                                    <p className='text-blue-500'>{parseFloat(crypto.supply).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                                    <p>{parseFloat(crypto.supply).toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
                                 </div>
                             </div>
                             <div className='flex flex-col space-y-2 w-2/3'>
